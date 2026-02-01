@@ -1,0 +1,106 @@
+<h1>👋 Hello World!</h1><!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¿Quieres ser mi San Valentín?</title>
+    <style>
+        /* CSS: Aquí se define la estética */
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #ffe4e1; /* Color rosado suave */
+            font-family: 'Arial', sans-serif;
+            overflow: hidden;
+        }
+
+        .container {
+            text-align: center;
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+        }
+
+        h1 {
+            color: #d63384;
+            font-size: 2rem;
+        }
+
+        .gif-container img {
+            width: 200px;
+            border-radius: 10px;
+        }
+
+        .buttons {
+            margin-top: 20px;
+        }
+
+        button {
+            padding: 10px 25px;
+            font-size: 1.2rem;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        #btn-si {
+            background-color: #ff4d6d;
+            color: white;
+            margin-right: 10px;
+        }
+
+        #btn-no {
+            background-color: #6c757d;
+            color: white;
+            position: absolute; /* Importante para que pueda "huir" */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container" id="main-card">
+        <div class="gif-container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/MDJ9IbM3vuzB0QZzU1/giphy.gif" alt="Gatito tierno">
+        </div>
+        <h1 id="pregunta">Jhanna, would you like to be my valentine? ❤️</h1>
+        <div class="buttons">
+            <button id="btn-si">¡Sí!</button>
+            <button id="btn-no">No</button>
+        </div>
+    </div>
+
+    <script>
+        // JavaScript: Aquí ocurre la magia
+        const btnNo = document.querySelector("#btn-no");
+        const btnSi = document.querySelector("#btn-si");
+        const pregunta = document.querySelector("#pregunta");
+        const card = document.querySelector("#main-card");
+
+        // Función para mover el botón "No" a una posición aleatoria
+        btnNo.addEventListener("mouseover", function () {
+            // Calculamos límites para que el botón no se salga de la pantalla
+            const x = Math.random() * (window.innerWidth - btnNo.offsetWidth);
+            const y = Math.random() * (window.innerHeight - btnNo.offsetHeight);
+
+            btnNo.style.left = x + "px";
+            btnNo.style.top = y + "px";
+        });
+
+        // Lo que pasa cuando finalmente logran darle clic al "Sí"
+        btnSi.addEventListener("click", function() {
+            pregunta.innerHTML = "¡SABÍA QUE DIRÍAS QUE SÍ! 😍";
+            btnNo.style.display = "none"; // Desaparece el botón No
+            btnSi.style.transform = "scale(1.5)"; // El botón sí se hace grande
+            
+            // Opcional: Cambiar el GIF a uno de celebración
+            document.querySelector("img").src = "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExOHpueGZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4bmZ4JmVwPXYxX2ludGVybmFsX2dpZl9ieV9pZCZjdD1n/c7m7v0TFCUUI8/giphy.gif";
+        });
+    </script>
+
+</body>
+</html>
